@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Power Line — Ganita Prakash Grade 8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f4f0;--surface:#fff;--surface2:#f0ede8;--border:#d8d4cc;
+  --text:#1a1814;--text2:#5a5650;--text3:#9a958e;
+  --blue:#2c5f9e;--red:#c0392b;--green:#1a7a4a;--orange:#e08020;
+  --font:'DM Sans',-apple-system,sans-serif;--mono:'DM Mono',ui-monospace,monospace;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;line-height:1.5}
+.page{max-width:860px;margin:0 auto;padding:28px 20px}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.title{font-size:22px;font-weight:700;margin-bottom:5px}
+.subtitle{font-size:14px;color:var(--text2);margin-bottom:22px;max-width:560px;line-height:1.5}
+.card{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+
+/* Base selector */
+.base-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.base-lbl{font-size:13px;font-weight:500;color:var(--text2)}
+.base-btn{padding:6px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:14px;font-weight:700;background:var(--surface);color:var(--text2);cursor:pointer;transition:all .12s}
+.base-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.base-input{padding:6px 10px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:14px;font-weight:700;width:70px;text-align:center;background:var(--surface);color:var(--text);outline:none}
+.base-input:focus{border-color:var(--blue)}
+
+/* Power line */
+.powerline-wrap{overflow-x:auto;padding-bottom:8px;margin-bottom:18px}
+.powerline{display:flex;align-items:stretch;gap:0;min-width:600px}
+.pl-cell{display:flex;flex-direction:column;align-items:center;border-right:1px solid var(--border);flex:1;min-width:70px;cursor:pointer;transition:background .12s;position:relative}
+.pl-cell:last-child{border-right:none}
+.pl-cell:hover{background:var(--surface2)}
+.pl-cell.selected{background:#fffbeb;border:1.5px solid var(--orange)}
+.pl-exp{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text3);padding:6px 0 3px;text-align:center}
+.pl-val{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--text);padding:3px 6px;text-align:center;line-height:1.3}
+.pl-arrow{position:absolute;top:50%;font-size:10px;color:var(--blue);font-weight:700;right:-14px;transform:translateY(-50%);z-index:1;background:var(--surface);padding:0 2px;pointer-events:none}
+/* Arrow labels between cells */
+.pl-between{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 3px;font-size:9px;font-family:var(--mono);color:var(--blue);font-weight:700;gap:2px}
+
+/* Selected cell info */
+.sel-info{background:var(--surface2);border:1.5px solid var(--orange);border-radius:10px;padding:14px 18px;margin-bottom:14px}
+.sel-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--orange);margin-bottom:8px}
+.sel-main{font-family:var(--mono);font-size:18px;font-weight:700;margin-bottom:6px;color:var(--text)}
+.sel-ops{display:flex;flex-wrap:wrap;gap:8px}
+.sel-op{background:var(--surface);border:1.5px solid var(--border);border-radius:7px;padding:5px 12px;font-family:var(--mono);font-size:12.5px;color:var(--text2);cursor:pointer}
+.sel-op:hover{border-color:var(--blue);color:var(--blue)}
+
+/* Question strip */
+.q-strip{background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.q-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:10px}
+.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.q-card{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;padding:8px 12px}
+.q-question{font-family:var(--mono);font-size:13px;color:var(--text2);margin-bottom:4px}
+.q-answer{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--blue)}
+
+.insight{background:#fff8f0;border:1.5px solid #f0d8c0;border-radius:10px;padding:13px 18px;font-size:13.5px;color:#6b4400;line-height:1.65}
+.insight strong{color:#a05000}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="lbl">Chapter 2 · Power Play</div>
+  <div class="title">Power Line</div>
+  <div class="subtitle">Every step along the power line multiplies by the base (going right) or divides by the base (going left). Click any power to explore — and use the operations to jump along the line.</div>
+
+  <div class="card">
+    <div class="base-row">
+      <span class="base-lbl">Base:</span>
+      <button class="base-btn active" onclick="setBase(2)">2</button>
+      <button class="base-btn" onclick="setBase(3)">3</button>
+      <button class="base-btn" onclick="setBase(4)">4</button>
+      <button class="base-btn" onclick="setBase(7)">7</button>
+      <button class="base-btn" onclick="setBase(10)">10</button>
+      <input type="number" class="base-input" id="baseInput" value="2" min="2" max="20" placeholder="n">
+      <button class="base-btn" onclick="setBase(parseInt(document.getElementById('baseInput').value)||2)">Set</button>
+    </div>
+
+    <div class="powerline-wrap">
+      <div class="powerline" id="powerLine"></div>
+    </div>
+
+    <div class="sel-info" id="selInfo" style="display:none">
+      <div class="sel-title">Selected: <span id="selPow"></span></div>
+      <div class="sel-main" id="selMain"></div>
+      <div class="sel-ops" id="selOps"></div>
+    </div>
+
+    <div class="q-strip" id="qStrip">
+      <div class="q-title">Textbook questions — answers from the power line</div>
+      <div class="q-grid" id="qGrid"></div>
+    </div>
+
+    <div class="insight" id="insight"></div>
+  </div>
+</div>
+
+<script>
+let base=2, selectedExp=0;
+const MIN_EXP=-3, MAX_EXP=9;
+
+function sup(n){
+  const map={'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','-':'⁻'};
+  return String(n).split('').map(c=>map[c]||c).join('');
+}
+function fmt(v){
+  if(v===0) return '0';
+  const abs=Math.abs(v);
+  if(abs>=1) return v.toLocaleString('en-IN');
+  // fraction
+  const den=Math.round(1/abs);
+  return `1/${den}`;
+}
+
+function buildLine(){
+  const pl=document.getElementById('powerLine');
+  pl.innerHTML='';
+  for(let e=MIN_EXP;e<=MAX_EXP;e++){
+    const val=Math.pow(base,e);
+    const cell=document.createElement('div');
+    cell.className='pl-cell'+(e===selectedExp?' selected':'');
+    cell.id='plc'+e;
+    cell.innerHTML=`<div class="pl-exp">${base}${sup(e)}</div><div class="pl-val">${fmt(val)}</div>`;
+    cell.onclick=()=>{selectedExp=e;buildLine();updateSel();};
+    pl.appendChild(cell);
+    // Arrow between cells
+    if(e<MAX_EXP){
+      const arr=document.createElement('div');
+      arr.className='pl-between';
+      arr.innerHTML=`<span style="color:var(--green)">×${base}</span><span style="color:var(--red)">÷${base}</span>`;
+      pl.appendChild(arr);
+    }
+  }
+  // Scroll selected into view
+  setTimeout(()=>document.getElementById('plc'+selectedExp)?.scrollIntoView({inline:'center',block:'nearest'}),50);
+}
+
+function updateSel(){
+  const info=document.getElementById('selInfo');
+  info.style.display='block';
+  const val=Math.pow(base,selectedExp);
+  document.getElementById('selPow').textContent=`${base}${sup(selectedExp)}`;
+  document.getElementById('selMain').textContent=`${base}${sup(selectedExp)} = ${fmt(val)}`;
+  const ops=document.getElementById('selOps');
+  ops.innerHTML='';
+  // ×base, ÷base, ×base², ÷base²
+  [{d:`× ${base}`,ne:selectedExp+1},{d:`÷ ${base}`,ne:selectedExp-1},{d:`× ${base}²`,ne:selectedExp+2},{d:`÷ ${base}²`,ne:selectedExp-2}].forEach(op=>{
+    if(op.ne<MIN_EXP||op.ne>MAX_EXP) return;
+    const btn=document.createElement('div');
+    btn.className='sel-op';
+    const nv=Math.pow(base,op.ne);
+    btn.textContent=`${op.d} = ${base}${sup(op.ne)} = ${fmt(nv)}`;
+    btn.onclick=()=>{selectedExp=op.ne;buildLine();updateSel();};
+    ops.appendChild(btn);
+  });
+
+  // Questions for base 7 (textbook)
+  const qgrid=document.getElementById('qGrid');
+  qgrid.innerHTML='';
+  const questions=base===7?[
+    {q:`2401 × 49 =`,a:`7⁴×7² = 7⁶ = ${Math.pow(7,6).toLocaleString()}`},
+    {q:`49³ =`,a:`(7²)³ = 7⁶ = ${Math.pow(7,6).toLocaleString()}`},
+    {q:`343 × 2401 =`,a:`7³×7⁴ = 7⁷ = ${Math.pow(7,7).toLocaleString()}`},
+    {q:`16807 ÷ 49 =`,a:`7⁵÷7² = 7³ = ${Math.pow(7,3)}`},
+    {q:`7 ÷ 343 =`,a:`7¹÷7³ = 7⁻² = 1/49`},
+    {q:`1/343 × 1/343 =`,a:`7⁻³×7⁻³ = 7⁻⁶ = 1/${Math.pow(7,6).toLocaleString()}`},
+  ]:base===4?[
+    {q:`4⁸ ÷ 4³ =`,a:`4⁵ = ${Math.pow(4,5).toLocaleString()}`},
+    {q:`4³ × 4² =`,a:`4⁵ = ${Math.pow(4,5).toLocaleString()}`},
+    {q:`42 times larger than 4⁻²?`,a:`4²÷4⁻² = 4⁴ = 256 times`},
+  ]:[
+    {q:`${base}${sup(3)} × ${base}${sup(2)} =`,a:`${base}${sup(5)} = ${Math.pow(base,5).toLocaleString()}`},
+    {q:`${base}${sup(6)} ÷ ${base}${sup(2)} =`,a:`${base}${sup(4)} = ${Math.pow(base,4).toLocaleString()}`},
+    {q:`${base}${sup(0)} =`,a:`1 (anything to power 0)`},
+    {q:`${base}${sup(-2)} =`,a:`1/${Math.pow(base,2)} = ${(1/Math.pow(base,2)).toFixed(6)}`},
+  ];
+  questions.forEach(({q,a})=>{
+    const card=document.createElement('div');
+    card.className='q-card';
+    card.innerHTML=`<div class="q-question">${q}</div><div class="q-answer">${a}</div>`;
+    qgrid.appendChild(card);
+  });
+
+  document.getElementById('insight').innerHTML=
+    `<strong>Reading the power line:</strong> Every step right = multiply by ${base}. Every step left = divide by ${base}. Jump 2 steps right = multiply by ${base}² = ${base*base}. The pattern never stops — it extends to negative exponents (fractions) in the negative direction and huge numbers to the right.`;
+}
+
+function setBase(b){
+  base=Math.max(2,Math.min(20,b));
+  document.getElementById('baseInput').value=base;
+  document.querySelectorAll('.base-btn').forEach(btn=>btn.classList.toggle('active',parseInt(btn.textContent)===base));
+  selectedExp=0;
+  buildLine();updateSel();
+}
+
+buildLine();updateSel();
+</script>
+</body>
+</html>
