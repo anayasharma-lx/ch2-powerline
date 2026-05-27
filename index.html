@@ -9,123 +9,79 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:#f7f4ef;
-  --cream2:#efe9e0;
-  --cream3:#e5ddd0;
-  --parchment:#d8cfc2;
-  --ink:#1a1510;
-  --ink2:#3a3028;
-  --ink3:#6a5f50;
-  --ink4:#9a9080;
-  --rule:#c8c0b0;
-  --rule2:#e0d8cc;
-  --ochre:#c4890a;
-  --ochre-bg:#fdf6e3;
-  --ochre-light:rgba(196,137,10,.12);
-  --crimson:#b82a2a;
-  --crimson-bg:#fdf0f0;
-  --teal:#0a7a6a;
-  --teal-bg:#e8f5f2;
+  --cream:#f7f4ef;--cream2:#efe9e0;--cream3:#e5ddd0;--parchment:#d8cfc2;
+  --ink:#1a1510;--ink2:#3a3028;--ink3:#6a5f50;--ink4:#9a9080;
+  --rule:#c8c0b0;--rule2:#e0d8cc;
+  --ochre:#c4890a;--ochre-bg:#fdf6e3;--ochre-light:rgba(196,137,10,.12);
+  --crimson:#b82a2a;--crimson-bg:#fdf0f0;
+  --teal:#0a7a6a;--teal-bg:#e8f5f2;
   --serif:'Syne',system-ui,sans-serif;
   --mono:'DM Mono',ui-monospace,monospace;
 }
 
 html,body{width:100%;height:100%;overflow:hidden}
 body{
-  font-family:var(--serif);
-  background:var(--cream);
-  color:var(--ink);
+  font-family:var(--serif);background:var(--cream);color:var(--ink);
   -webkit-font-smoothing:antialiased;
   display:flex;flex-direction:column;
-  position:fixed;inset:0;
-  overflow:hidden;
+  position:fixed;inset:0;overflow:hidden;
 }
 
-/* ruled paper texture */
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:
-    repeating-linear-gradient(
-      transparent, transparent 27px,
-      rgba(180,170,155,.18) 27px, rgba(180,170,155,.18) 28px
-    );
+  background-image:repeating-linear-gradient(
+    transparent,transparent 27px,
+    rgba(180,170,155,.18) 27px,rgba(180,170,155,.18) 28px
+  );
 }
 
 /* ── TOP HEADER ── */
 .top{
   position:relative;z-index:10;
-  border-bottom:2px solid var(--ink);
-  background:var(--cream);
-  flex-shrink:0;
-  display:flex;align-items:stretch;
+  border-bottom:2px solid var(--ink);background:var(--cream);
+  flex-shrink:0;display:flex;align-items:stretch;
 }
 .top-left{
-  padding:14px 20px;
-  border-right:1px solid var(--ink);
+  padding:14px 20px;border-right:1px solid var(--ink);
   display:flex;flex-direction:column;justify-content:center;
   min-width:200px;
 }
-.top-chapter{
-  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--ink3);font-family:var(--mono);
-  margin-bottom:3px;
-}
-.top-title{
-  font-size:22px;font-weight:800;color:var(--ink);
-  line-height:1;letter-spacing:-.02em;
-}
-.top-center{
-  flex:1;padding:14px 24px;
-  display:flex;align-items:center;
-}
+.top-chapter{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3);font-family:var(--mono);margin-bottom:3px;}
+.top-title{font-size:22px;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.02em;}
+.top-center{flex:1;padding:14px 24px;display:flex;align-items:center;}
 .top-concept{
-  font-size:13px;font-style:italic;color:var(--ink3);
-  font-family:var(--mono);line-height:1.55;
-  border-left:2px solid var(--ochre);
-  padding-left:12px;
+  font-size:13px;font-style:italic;color:var(--ink3);font-family:var(--mono);line-height:1.55;
+  border-left:2px solid var(--ochre);padding-left:12px;
 }
-.top-concept strong{
-  color:var(--ochre);font-style:normal;font-weight:600;
-}
+.top-concept strong{color:var(--ochre);font-style:normal;font-weight:600;}
 .top-right{
-  border-left:1px solid var(--ink);
-  padding:12px 16px;
+  border-left:1px solid var(--ink);padding:12px 16px;
   display:flex;flex-direction:column;justify-content:center;align-items:flex-end;
   gap:4px;min-width:150px;
 }
-.tr-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);font-family:var(--mono);}
+.tr-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);font-family:var(--mono);}
 .tr-val{font-size:15px;font-weight:700;color:var(--ink);font-family:var(--mono);}
 
 /* ── BASE SELECTOR ── */
 .base-bar{
   position:relative;z-index:10;
-  border-bottom:1px solid var(--rule);
-  background:var(--cream2);
+  border-bottom:1px solid var(--rule);background:var(--cream2);
   display:flex;align-items:center;
-  padding:0 20px;
-  flex-shrink:0;
-  height:44px;gap:8px;
+  padding:0 20px;flex-shrink:0;height:44px;gap:8px;
 }
 .base-label{
-  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--ink4);font-family:var(--mono);
-  border-right:1px solid var(--rule);
-  padding-right:12px;margin-right:4px;
+  border-right:1px solid var(--rule);padding-right:12px;margin-right:4px;
 }
 .base-btn{
-  height:28px;min-width:34px;
-  padding:0 10px;
-  border:1px solid var(--rule);
-  border-radius:3px;
+  height:28px;min-width:34px;padding:0 10px;
+  border:1px solid var(--rule);border-radius:3px;
   font-family:var(--mono);font-size:13px;font-weight:600;
-  color:var(--ink3);background:transparent;
-  cursor:pointer;transition:all .15s;
+  color:var(--ink3);background:transparent;cursor:pointer;transition:all .15s;
 }
 .base-btn:hover{border-color:var(--ink3);color:var(--ink)}
-.base-btn.active{
-  background:var(--ink);color:var(--cream);
-  border-color:var(--ink);
-}
+.base-btn.active{background:var(--ink);color:var(--cream);border-color:var(--ink);}
 .custom-wrap{margin-left:6px;display:flex;gap:5px;align-items:center}
 .custom-inp{
   width:46px;height:28px;
@@ -139,8 +95,7 @@ body::before{
   height:28px;padding:0 10px;
   border:1px solid var(--rule);border-radius:3px;
   font-family:var(--mono);font-size:11px;font-weight:600;
-  color:var(--ink3);background:transparent;cursor:pointer;
-  transition:all .12s;
+  color:var(--ink3);background:transparent;cursor:pointer;transition:all .12s;
 }
 .set-btn:hover{border-color:var(--ink);color:var(--ink)}
 
@@ -152,45 +107,59 @@ body::before{
   position:relative;z-index:5;
 }
 
-/* ── RAIL AREA ── */
+/* ── RAIL AREA ──
+   KEY FIX: overflow must NOT clip the top of lifted selected card.
+   We give padding-top:36px so the sz-sel card (translateY -18px) has room.
+   overflow-x is kept hidden via rail-wrap; rail-area itself is overflow:visible
+   so the popped card is never clipped. ── */
 .rail-area{
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  overflow:hidden;
   position:relative;
-  padding:0 0 10px;
+  /* NO overflow:hidden here — that was clipping the raised card */
+  padding-top:36px;      /* room for translateY(-18px) + box-shadow */
+  padding-bottom:60px;   /* room for nav strip */
 }
 
-/* axis line */
+/* axis line — sits at the card mid-height in normal state.
+   Cards are ~80px tall; the axis should be ~40px from bottom of rail-track.
+   We position it within rail-area using bottom offset logic. */
 .axis-line{
   position:absolute;
   left:0;right:0;
-  top:50%;transform:translateY(calc(-50% + 16px));
+  /* place it in the lower half of the rail-area to align with card centers */
+  bottom:calc(60px + 40px);   /* nav-strip height + half card height */
   height:2px;background:var(--ink);
-  z-index:1;
+  z-index:1;pointer-events:none;
 }
-.axis-line::before{
+.axis-line::after{
   content:'';position:absolute;right:-2px;top:-5px;
   border-left:10px solid var(--ink);
   border-top:6px solid transparent;
   border-bottom:6px solid transparent;
 }
 
-/* rail track */
+/* rail track container — clips horizontally only */
 .rail-wrap{
-  width:100%;overflow:hidden;position:relative;z-index:2;
+  width:100%;
+  overflow-x:hidden;
+  overflow-y:visible;   /* KEY: don't clip the raised card vertically */
+  position:relative;z-index:2;
 }
+
 .rail-track{
   display:flex;align-items:flex-end;
   transition:transform .42s cubic-bezier(.4,0,.2,1);
   will-change:transform;
   padding-bottom:6px;
+  /* extra top padding so popped card doesn't clip within track */
+  padding-top:26px;
   gap:0;
 }
 
-/* fade masks */
+/* fade masks — only horizontal */
 .rail-wrap::before,.rail-wrap::after{
-  content:'';position:absolute;top:0;bottom:0;width:140px;z-index:10;pointer-events:none;
+  content:'';position:absolute;top:0;bottom:0;width:120px;z-index:10;pointer-events:none;
 }
 .rail-wrap::before{left:0;background:linear-gradient(to right,var(--cream) 20%,transparent)}
 .rail-wrap::after{right:0;background:linear-gradient(to left,var(--cream) 20%,transparent)}
@@ -198,53 +167,31 @@ body::before{
 /* connector between cards */
 .conn{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  width:44px;flex-shrink:0;
-  position:relative;align-self:center;
+  width:44px;flex-shrink:0;position:relative;align-self:center;
   margin-bottom:28px;
 }
-.conn-up{
-  font-family:var(--mono);font-size:9px;font-weight:600;
-  color:var(--teal);opacity:.8;
-  margin-bottom:3px;white-space:nowrap;
-  letter-spacing:.02em;
-}
-.conn-down{
-  font-family:var(--mono);font-size:9px;font-weight:600;
-  color:var(--crimson);opacity:.8;
-  margin-top:3px;white-space:nowrap;
-  letter-spacing:.02em;
-}
-.conn-dot{
-  width:5px;height:5px;border-radius:50%;
-  background:var(--rule);
-  transition:all .25s;
-}
+.conn-up{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--teal);opacity:.8;margin-bottom:3px;white-space:nowrap;letter-spacing:.02em;}
+.conn-down{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--crimson);opacity:.8;margin-top:3px;white-space:nowrap;letter-spacing:.02em;}
+.conn-dot{width:5px;height:5px;border-radius:50%;background:var(--rule);transition:all .25s;}
 .conn.pulse-fwd .conn-dot{background:var(--teal);box-shadow:0 0 10px var(--teal);animation:pdot .5s ease}
 .conn.pulse-bwd .conn-dot{background:var(--crimson);box-shadow:0 0 10px var(--crimson);animation:pdot .5s ease}
 @keyframes pdot{0%{transform:scale(2.5)}100%{transform:scale(1)}}
 
 /* ── POWER CARD ── */
 .pcard{
-  border-radius:0;
-  border:1px solid var(--rule);
-  background:var(--cream);
-  padding:10px 8px 8px;
-  text-align:center;
-  cursor:pointer;
+  border-radius:0;border:1px solid var(--rule);
+  background:var(--cream);padding:10px 8px 8px;
+  text-align:center;cursor:pointer;
   transition:all .32s cubic-bezier(.4,0,.2,1);
-  position:relative;
-  user-select:none;
-  flex-shrink:0;
-  width:72px;
+  position:relative;user-select:none;flex-shrink:0;width:72px;
 }
 .pcard:hover:not(.sz-sel){border-color:var(--ink3)}
 
-/* sizes by distance */
 .pcard.sz-sel{
-  width:120px;
-  border:2px solid var(--ink);
+  width:120px;border:2px solid var(--ink);
   background:var(--ochre-bg);
   transform:translateY(-18px);
+  /* shadow goes DOWN (positive offset) so it's never clipped */
   box-shadow:0 8px 0 var(--ink),4px 4px 0 var(--parchment);
   z-index:5;
 }
@@ -254,96 +201,43 @@ body::before{
 .pcard.neg-zone{border-color:#d8a0a0;background:var(--crimson-bg)}
 .pcard.neg-zone.sz-sel{border-color:var(--crimson);background:#fde8e8;box-shadow:0 8px 0 var(--crimson),4px 4px 0 #f0c0c0}
 
-.pc-exp{
-  font-family:var(--mono);font-size:10px;font-weight:500;
-  color:var(--ink4);margin-bottom:6px;
-  letter-spacing:.03em;
-}
+.pc-exp{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--ink4);margin-bottom:6px;letter-spacing:.03em;}
 .sz-sel .pc-exp{font-size:12px;color:var(--ochre);font-weight:600;}
 .neg-zone.sz-sel .pc-exp{color:var(--crimson);}
-
-.pc-val{
-  font-family:var(--mono);font-size:14px;font-weight:600;
-  color:var(--ink);line-height:1;
-  transition:font-size .3s;
-}
+.pc-val{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--ink);line-height:1;transition:font-size .3s;}
 .sz-sel .pc-val{font-size:26px;color:var(--ink);}
 .sz-adj .pc-val{font-size:15px;}
 .sz-far .pc-val{font-size:12px;}
 .sz-vfar .pc-val{font-size:10px;}
-
-.pc-note{
-  font-family:var(--mono);font-size:8px;color:var(--ink4);
-  margin-top:3px;
-}
-.sz-sel .pc-note{font-size:9px;color:var(--ochre)}
+.pc-note{font-family:var(--mono);font-size:10px;color:var(--ink4);margin-top:3px;}
+.sz-sel .pc-note{font-size:10px;color:var(--ochre)}
 .neg-zone.sz-sel .pc-note{color:var(--crimson)}
 
 /* ── BOTTOM PANEL ── */
 .bottom{
-  border-top:2px solid var(--ink);
-  background:var(--cream2);
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  flex-shrink:0;
-  max-height:260px;
+  border-top:2px solid var(--ink);background:var(--cream2);
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  flex-shrink:0;max-height:260px;
 }
-.bp-cell{
-  padding:14px 16px;
-  border-right:1px solid var(--rule);
-  overflow:hidden;
-}
+.bp-cell{padding:14px 16px;border-right:1px solid var(--rule);overflow:hidden;}
 .bp-cell:last-child{border-right:none}
-.bp-lbl{
-  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink4);font-family:var(--mono);
-  margin-bottom:8px;
-}
+.bp-lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink4);font-family:var(--mono);margin-bottom:8px;}
 
-/* info cell */
-.info-big{
-  font-family:var(--mono);font-size:24px;font-weight:600;
-  color:var(--ink);line-height:1.1;margin-bottom:5px;
-}
+.info-big{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--ink);line-height:1.1;margin-bottom:5px;}
 .info-sub{font-size:12px;color:var(--ink3);font-family:var(--mono);line-height:1.55}
 
-/* journey cell */
-.journey-list{
-  display:flex;flex-wrap:wrap;gap:5px;
-  overflow:hidden;max-height:80px;
-}
-.j-node{
-  display:flex;align-items:center;gap:4px;
-  font-family:var(--mono);font-size:11px;font-weight:600;
-  color:var(--ink3);
-}
-.j-node.cur{
-  color:var(--ochre);
-  background:var(--ochre-light);
-  border-radius:2px;
-  padding:2px 6px;
-}
-.j-arrow{
-  font-size:10px;color:var(--rule);
-  font-family:var(--mono);
-}
+.journey-list{display:flex;flex-wrap:wrap;gap:5px;overflow:hidden;max-height:80px;}
+.j-node{display:flex;align-items:center;gap:4px;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--ink3);}
+.j-node.cur{color:var(--ochre);background:var(--ochre-light);border-radius:2px;padding:2px 6px;}
+.j-arrow{font-size:10px;color:var(--rule);font-family:var(--mono);}
 
-/* Q&A cell */
-.qa-grid{
-  display:flex;flex-direction:column;gap:5px;
-  overflow-y:auto;max-height:150px;
-  scrollbar-width:none;
-}
+.qa-grid{display:flex;flex-direction:column;gap:5px;overflow-y:auto;max-height:150px;scrollbar-width:none;}
 .qa-grid::-webkit-scrollbar{display:none}
 .qa-item{
   display:flex;gap:8px;align-items:baseline;
-  padding:5px 8px;
-  background:var(--cream);
-  border:1px solid var(--rule2);
-  border-radius:3px;
-  cursor:pointer;
-  transition:all .14s;
-  font-family:var(--mono);font-size:11px;
+  padding:5px 8px;background:var(--cream);
+  border:1px solid var(--rule2);border-radius:3px;
+  cursor:pointer;transition:all .14s;font-family:var(--mono);font-size:11px;
 }
 .qa-item:hover{border-color:var(--rule);background:var(--cream2)}
 .qa-item.open{border-color:var(--teal);background:var(--teal-bg)}
@@ -351,78 +245,103 @@ body::before{
 .qa-a{color:var(--teal);font-weight:600;display:none;white-space:nowrap}
 .qa-item.open .qa-a{display:block}
 
-/* nav buttons */
+/* ── NAV STRIP ──
+   Positioned at bottom of rail-area, inside the padding-bottom gap ── */
 .nav-strip{
-  position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
+  position:absolute;
+  bottom:12px;left:50%;transform:translateX(-50%);
   display:flex;gap:8px;align-items:center;
   z-index:20;
+  flex-wrap:wrap;justify-content:center;
 }
 .nav-btn{
   display:flex;align-items:center;gap:5px;
-  padding:7px 14px;
-  border:1.5px solid;
-  border-radius:3px;
+  padding:7px 14px;border:1.5px solid;border-radius:3px;
   font-family:var(--mono);font-size:11px;font-weight:600;
-  cursor:pointer;transition:all .14s;
-  white-space:nowrap;
+  cursor:pointer;transition:all .14s;white-space:nowrap;
 }
-.nav-fwd{
-  background:var(--teal-bg);border-color:var(--teal);color:var(--teal);
-}
+.nav-fwd{background:var(--teal-bg);border-color:var(--teal);color:var(--teal);}
 .nav-fwd:hover:not(:disabled){background:var(--teal);color:#fff}
-.nav-bwd{
-  background:var(--crimson-bg);border-color:var(--crimson);color:var(--crimson);
-}
+.nav-bwd{background:var(--crimson-bg);border-color:var(--crimson);color:var(--crimson);}
 .nav-bwd:hover:not(:disabled){background:var(--crimson);color:#fff}
 .nav-btn:disabled{opacity:.28;cursor:default}
 .key-hint{
   font-family:var(--mono);font-size:10px;color:var(--ink4);
   display:flex;align-items:center;gap:4px;
-  background:var(--cream2);
-  border:1px solid var(--rule);
-  border-radius:3px;
-  padding:5px 8px;
+  background:var(--cream2);border:1px solid var(--rule);border-radius:3px;padding:5px 8px;
 }
-.key-chip{
-  display:inline-block;
-  border:1px solid var(--rule);
-  border-radius:2px;
-  padding:1px 5px;
-  font-size:10px;
-  background:var(--cream);
-}
+.key-chip{display:inline-block;border:1px solid var(--rule);border-radius:2px;padding:1px 5px;font-size:10px;background:var(--cream);}
 
 /* ── JUMP BADGE ── */
 .badge{
   position:fixed;top:50%;left:50%;
   transform:translate(-50%,-50%) scale(0);
   font-family:var(--mono);font-size:42px;font-weight:700;
-  color:var(--cream);
-  padding:16px 30px;
+  color:var(--cream);padding:16px 30px;
   pointer-events:none;z-index:999;
   transition:transform .22s cubic-bezier(.34,1.56,.64,1),opacity .2s;
-  border-radius:3px;
-  white-space:nowrap;
-  border:2px solid;
+  border-radius:3px;white-space:nowrap;border:2px solid;
 }
 .badge.show{transform:translate(-50%,-50%) scale(1)}
 .badge.hide{transform:translate(-50%,-50%) scale(0);opacity:0}
 .badge.fwd{background:var(--teal);border-color:var(--teal)}
 .badge.bwd{background:var(--crimson);border-color:var(--crimson)}
 
-@media(max-width:680px){
-  .bottom{grid-template-columns:1fr;grid-template-rows:auto auto auto}
-  .bp-cell{border-right:none;border-bottom:1px solid var(--rule)}
-  .top-concept{display:none}
+/* ══ MOBILE ══════════════════════════════════════════════════ */
+@media (max-width:768px){
+  html,body{overflow:auto;height:auto}
+  body{position:static;display:flex;flex-direction:column;min-height:100dvh}
+
+  /* header: compact stack */
+  .top{flex-wrap:wrap;height:auto}
+  .top-left{padding:10px 14px;min-width:0;border-right:none;border-bottom:1px solid var(--rule)}
+  .top-title{font-size:18px}
+  .top-center{display:none}   /* hide concept on narrow — too long */
+  .top-right{border-left:none;border-top:1px solid var(--rule);
+    flex-direction:row;align-items:center;justify-content:space-between;
+    padding:8px 14px;min-width:0;width:100%}
+
+  /* base bar: allow wrap */
+  .base-bar{height:auto;padding:8px 14px;flex-wrap:wrap;gap:6px}
+  .base-label{border-right:none;padding-right:0;margin-right:0}
+  .custom-wrap{margin-left:0}
+
+  /* rail area: reduce padding so cards have more room */
+  .rail-area{
+    padding-top:40px;   /* still need room for raised card */
+    padding-bottom:70px; /* still need room for nav */
+    min-height:180px;
+  }
+
+  /* nav strip: wrap on narrow */
+  .nav-strip{gap:6px}
+  .nav-btn{padding:6px 10px;font-size:10px}
+  .key-hint{display:none}  /* hide keyboard hint on touch */
+
+  /* bottom panel: single column */
+  .bottom{grid-template-columns:1fr;grid-template-rows:auto auto auto;max-height:none}
+  .bp-cell{border-right:none;border-bottom:1px solid var(--rule);padding:12px 14px}
+  .bp-cell:last-child{border-bottom:none}
+  .info-big{font-size:20px}
+  .info-sub{font-size:11px}
+  .qa-grid{max-height:200px}
+  .journey-list{max-height:60px}
+}
+
+@media (max-width:480px){
+  .top-title{font-size:16px}
+  .base-btn{height:26px;min-width:30px;font-size:12px;padding:0 8px}
+  .nav-btn{padding:5px 8px;font-size:10px}
+  .pcard.sz-sel{width:100px}
+  .sz-sel .pc-val{font-size:22px}
+  .rail-area{padding-top:38px}
 }
 </style>
 </head>
 <body>
 
-<!-- JUMP BADGE -->
 <div class="badge" id="badge"></div>
 
-<!-- TOP HEADER -->
 <div class="top">
   <div class="top-left">
     <div class="top-chapter">Ch·02 · Power Play</div>
@@ -439,7 +358,6 @@ body::before{
   </div>
 </div>
 
-<!-- BASE SELECTOR -->
 <div class="base-bar">
   <span class="base-label">Base</span>
   <button class="base-btn active" data-base="2">2</button>
@@ -453,14 +371,12 @@ body::before{
   </div>
 </div>
 
-<!-- MAIN -->
 <div class="main">
   <div class="rail-area" id="rail-area">
     <div class="axis-line"></div>
     <div class="rail-wrap" id="rail-wrap">
       <div class="rail-track" id="rail-track"></div>
     </div>
-    <!-- nav strip -->
     <div class="nav-strip">
       <button class="nav-btn nav-bwd" id="b2">←← ÷b²</button>
       <button class="nav-btn nav-bwd" id="b1">← ÷b</button>
@@ -470,7 +386,6 @@ body::before{
     </div>
   </div>
 
-  <!-- BOTTOM PANEL -->
   <div class="bottom">
     <div class="bp-cell">
       <div class="bp-lbl">Position</div>
@@ -508,7 +423,10 @@ function fmtVal(e, b){
 }
 
 function fullFmt(e, b){
-  if(e >= 0) return Math.pow(b, e).toLocaleString('en-IN');
+  if(e >= 0){
+    const v = Math.pow(b, e);
+    return v >= 1e12 ? v.toExponential(2) : v.toLocaleString('en-IN');
+  }
   return '1/' + Math.round(Math.pow(b, -e));
 }
 
@@ -539,10 +457,10 @@ function updateRailState(dir){
     if(!card) return;
     const dist = Math.abs(e - selExp);
     card.classList.remove('sz-sel','sz-adj','sz-far','sz-vfar');
-    if(dist === 0) card.classList.add('sz-sel');
+    if(dist === 0)      card.classList.add('sz-sel');
     else if(dist === 1) card.classList.add('sz-adj');
-    else if(dist <= 3) card.classList.add('sz-far');
-    else card.classList.add('sz-vfar');
+    else if(dist <= 3)  card.classList.add('sz-far');
+    else                card.classList.add('sz-vfar');
     const noteStr = e === 0 ? 'zero power' : e === 1 ? 'the base' : e < 0 ? 'fraction' : '';
     card.innerHTML = `<div class="pc-exp">${base}${sup(e)}</div><div class="pc-val">${fmtVal(e, base)}</div><div class="pc-note">${noteStr}</div>`;
     if(e > EMIN){
@@ -583,7 +501,10 @@ function showBadge(steps){
   badge.textContent = fwd ? '×' + mStr : '÷' + mStr;
   badge.className = 'badge show ' + (fwd ? 'fwd' : 'bwd');
   clearTimeout(badgeTimer);
-  badgeTimer = setTimeout(() => { badge.classList.remove('show'); badge.classList.add('hide'); }, 900);
+  badgeTimer = setTimeout(() => {
+    badge.classList.remove('show');
+    badge.classList.add('hide');
+  }, 900);
 }
 
 function navigate(steps){
@@ -598,18 +519,16 @@ function navigate(steps){
 }
 
 function updatePanel(){
-  const e = selExp;
-  const b = base;
+  const e = selExp, b = base;
   document.getElementById('tr-val').textContent = b + sup(e) + ' = ' + fullFmt(e, b);
   document.getElementById('info-big').textContent = b + sup(e) + ' = ' + fullFmt(e, b);
   let sub = '';
-  if(e === 0) sub = 'Any base to power 0 = 1 (nᵃ÷nᵃ = n⁰ = 1)';
-  else if(e === 1) sub = b + '¹ = ' + b + ' — the base itself.';
-  else if(e > 0) sub = b + ' multiplied by itself ' + e + ' time' + (e !== 1 ? 's' : '') + '. Each step right = ×' + b + '.';
-  else sub = '1 ÷ ' + b + sup(-e) + '. Negative exponent = fraction.';
+  if(e === 0)       sub = 'Any base to power 0 = 1  (nᵃ÷nᵃ = n⁰ = 1)';
+  else if(e === 1)  sub = b + '¹ = ' + b + ' — the base itself.';
+  else if(e > 0)    sub = b + ' multiplied by itself ' + e + ' time' + (e!==1?'s':'') + '. Each step right = ×' + b + '.';
+  else              sub = '1 ÷ ' + b + sup(-e) + '. Negative exponent = fraction.';
   document.getElementById('info-sub').textContent = sub;
 
-  // Journey
   const jl = document.getElementById('journey-list');
   jl.innerHTML = '';
   const recent = journey.slice(-9);
@@ -619,17 +538,13 @@ function updatePanel(){
     node.textContent = b + sup(exp);
     jl.appendChild(node);
     if(i < recent.length - 1){
-      const diff = recent[i + 1] - recent[i];
       const arr = document.createElement('span');
       arr.className = 'j-arrow';
-      const m = Math.pow(b, Math.abs(diff));
-      const mStr = m >= 1e6 ? m.toExponential(1) : m.toLocaleString('en-IN');
-      arr.textContent = diff > 0 ? '→' : '←';
+      arr.textContent = recent[i+1] > recent[i] ? '→' : '←';
       jl.appendChild(arr);
     }
   });
 
-  // Buttons
   document.getElementById('b1').disabled = selExp <= EMIN;
   document.getElementById('b2').disabled = selExp <= EMIN + 1;
   document.getElementById('f1').disabled = selExp >= EMAX;
@@ -649,8 +564,8 @@ function buildQA(){
     {q: b+sup(6)+' ÷ '+b+sup(2)+' = ?', a: b+sup(4)+' = '+fullFmt(4,b)},
     {q: '('+b+sup(2)+')'+sup(3)+' = ?', a: b+sup(6)+' = '+fullFmt(6,b)},
     {q: b+sup(-2)+' × '+b+sup(5)+' = ?', a: b+sup(3)+' = '+fullFmt(3,b)},
-    {q: b+sup(0)+' = ?', a: '1 — always'},
-    {q: b+sup(3)+' ÷ '+b+sup(5)+' = ?', a: b+sup(-2)+' = 1/'+(b*b)},
+    {q: b+sup(0)+' = ?',                  a: '1 — always'},
+    {q: b+sup(3)+' ÷ '+b+sup(5)+' = ?',  a: b+sup(-2)+' = 1/'+(b*b)},
   ];
   const grid = document.getElementById('qa-grid');
   grid.innerHTML = '';
@@ -666,17 +581,23 @@ function buildQA(){
 function setBase(b){
   base = Math.max(2, Math.min(20, b));
   document.getElementById('cinp').value = base;
-  document.querySelectorAll('.base-btn').forEach(btn => btn.classList.toggle('active', +btn.dataset.base === base));
+  document.querySelectorAll('.base-btn').forEach(btn =>
+    btn.classList.toggle('active', +btn.dataset.base === base)
+  );
   selExp = 0; journey = [0];
   buildRail(); updatePanel();
 }
 
-document.querySelectorAll('.base-btn').forEach(btn => btn.addEventListener('click', () => setBase(+btn.dataset.base)));
+document.querySelectorAll('.base-btn').forEach(btn =>
+  btn.addEventListener('click', () => setBase(+btn.dataset.base))
+);
 document.getElementById('sbtn').addEventListener('click', () => {
   const v = parseInt(document.getElementById('cinp').value);
   if(v >= 2 && v <= 20) setBase(v);
 });
-document.getElementById('cinp').addEventListener('keydown', e => { if(e.key === 'Enter') document.getElementById('sbtn').click(); });
+document.getElementById('cinp').addEventListener('keydown', e => {
+  if(e.key === 'Enter') document.getElementById('sbtn').click();
+});
 
 document.getElementById('f1').addEventListener('click', () => navigate(1));
 document.getElementById('f2').addEventListener('click', () => navigate(2));
@@ -685,7 +606,7 @@ document.getElementById('b2').addEventListener('click', () => navigate(-2));
 
 document.addEventListener('keydown', e => {
   if(e.key === 'ArrowRight') navigate(1);
-  if(e.key === 'ArrowLeft') navigate(-1);
+  if(e.key === 'ArrowLeft')  navigate(-1);
 });
 
 let rt;
@@ -694,7 +615,6 @@ window.addEventListener('resize', () => {
   rt = setTimeout(() => positionTrack(document.getElementById('rail-wrap').clientWidth), 80);
 });
 
-// Init
 buildRail();
 updatePanel();
 setTimeout(() => positionTrack(document.getElementById('rail-wrap').clientWidth), 120);
